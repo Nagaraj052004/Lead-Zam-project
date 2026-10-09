@@ -1,6 +1,6 @@
-# LeadZam CRM - Google Stitch UI Implementation
+# LeadZam CRM UI Implementation
 
-A responsive React + TypeScript + Vite web application reproducing Google Stitch UI screens for **LeadZam CRM**.
+A responsive React + TypeScript + Vite web application reproducing UI screens for **LeadZam CRM**.
 
 ---
 
@@ -59,3 +59,25 @@ Implemented in `src/utils/validation.ts`:
 - **Desktop**: 1440px, 1280px
 - **Tablet**: 768px
 - **Mobile**: 390px, 360px
+
+---
+
+## 🤖 AI Usage Notes
+
+### 1. Which AI tools did you use?
+- **Antigravity AI (powered by Gemini 3.6 Flash)**: Used for code generation, UI component scaffolding, design system architecture, and form validation auditing.
+
+### 2. How did AI help with the audit, design, or frontend implementation?
+- **Audit**: Assisted in auditing reference UI designs to break down necessary screen layouts, modal states, interactive components, and routing structures.
+- **Design**: Generated curated CSS color tokens, glassmorphism cards, responsive flex/grid layouts, dynamic micro-animations, and typography scales matching professional CRM design aesthetics.
+- **Frontend Implementation**: Rapidly generated Vite + React + TypeScript component structures (`SignUp`, `Dashboard`, `LogCallModal`, `TrialModal`, `LandingPage`), router configuration, and state management hooks.
+
+### 3. Describe one AI suggestion that you changed, rejected, or improved, and why.
+- **AI Suggestion**: The AI initially suggested a loose regular expression for email validation (`/^\S+@\S+\.\S+$/`), which allowed edge cases like `user@domain` without TLD checking or whitespace sanitization.
+- **Change & Improvement**: I rejected the simple regex and built a strict, multi-step email validation module in `src/utils/validation.ts`. The revised logic requires a valid top-level domain after `@`, handles whitespace trimming, displays distinct error messages ("Please enter your email address" vs "Please enter a valid email address"), and dynamically toggles the red border (`.has-error`) UI state.
+
+### 4. What did you personally verify instead of trusting the AI output?
+- **Build & Type Safety**: Personally ran `npm run build` and verified zero TypeScript errors, broken imports, or missing symbol references.
+- **Interactive Workflows**: Manually verified user flows including sign-up form validation, free trial modal triggers, call logging state updates, phone number 1-click copying, and billing period price calculations.
+- **Responsive Layouts**: Tested visual layouts across desktop (1440px, 1280px), tablet (768px), and mobile (390px, 360px) breakpoints in browser developer tools to ensure zero layout overflow or clipped content.
+
